@@ -11,9 +11,9 @@ public class TP2resto {
 		};
 	
 	public static int getChoice(String table[], Scanner scan) {
-//		table[0] rappelle chaque index de chaque tableau
-		System.out.println("Que souhaitez-vous comme " + table[]);
-		for(int i=0; i < table.length; i++) {
+
+		System.out.println("Que souhaitez-vous comme " + table[0]);
+		for(int i=1; i < table.length; i++) {
 			System.out.print("[" + i + "-" + table[i] + "]");
 		}
 		int choice = scan.nextInt();
@@ -23,7 +23,7 @@ public class TP2resto {
 	public static void main(String[] args) {
 		
 //		créer un tableau
-		String[][] yourOrders = {};
+		ArrayList<ArrayList<String>> yourOrders = new ArrayList<ArrayList<String>>();
 				
 		// 1 - Afficher un texte " Bonjour, combien de menus souhaitez-vous ? "
 		System.out.println("Bonjour, combien de menus souhaitez-vous ?");
@@ -33,9 +33,11 @@ public class TP2resto {
 
 		// 2 - Lecture, vérification et enregistrement de la réponse
 		int orderNumber = scan.nextInt();
+		yourOrders.add(new ArrayList<String>());
 		
 //		création de variables pour récupérer le choix de l'UI 
 		int choice = getChoice(menu[0], scan);
+		
 		String menuItem = menu[0][choice];	
 //			3 répéter un ensemble d'action: menu par commande
 		for(int i = 1; i < orderNumber + 1; i++) {
@@ -47,8 +49,8 @@ public class TP2resto {
 			
 			// 3.2.1 - Affichage des choix
 
-
-			System.out.println("Vous avez séléctionné" + choice);
+			yourOrders.get(0).add(menuItem);
+			System.out.println("Vous avez séléctionné" + yourOrders);
 
 			// 3.2.2 - Selection et stockage du choix	
 
@@ -153,5 +155,5 @@ public class TP2resto {
 //System.out.println("Vos commandes:");
 //for (String order : yourOrders) {
 //    System.out.println(order);
-}
+//}
 
